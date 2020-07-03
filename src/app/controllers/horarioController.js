@@ -38,8 +38,8 @@ router.post('/gethorario', async (req, res) => {
         var horarios_saida = [];
         horarios.forEach( (element) => {
             console.log("hora_banco = "+new Date(element.data).getUTCHours());
-            console.log("hora_atual = "+new Date().getUTCHours());
-            var hours = Math.abs((new Date().getHours()*60+new Date().getMinutes()) - (new Date(element.data).getUTCHours()*60+new Date(element.data).getUTCMinutes()))/60;
+            console.log("hora_atual = "+new Date().getUTCHours()-5);
+            var hours = Math.abs(((new Date().getHours()-5)*60+new Date().getMinutes()) - (new Date(element.data).getUTCHours()*60+new Date(element.data).getUTCMinutes()))/60;
             console.log("horas = "+hours);
             if(hours<=1)
                 horarios_saida.push(element);
