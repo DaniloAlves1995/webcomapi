@@ -9,4 +9,4 @@ mongoose.set('useFindAndModify', false);
 mongoose.Promise = global.Promise;
 
 //exporta o mongoose com a conexão
-module.exports = mongoose;
+module.exports = mongoose;  

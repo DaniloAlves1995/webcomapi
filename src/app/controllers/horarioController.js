@@ -37,11 +37,16 @@ router.post('/gethorario', async (req, res) => {
         
         var horarios_saida = [];
         horarios.forEach( (element) => {
-            console.log("hora_banco = "+new Date(element.data).getUTCHours());
-            console.log("hora_atual = "+(new Date().getUTCHours()-3));
-            var hours = Math.abs(((new Date().getUTCHours()-3)*60+new Date().getUTCMinutes()) - (new Date(element.data).getUTCHours()*60+new Date(element.data).getUTCMinutes()))/60;
-            console.log("horas = "+hours);
-            if(hours<=1)
+            
+            var date1 = new Date(element.data.substring(0, element.data.length-6));
+            var date2 = new Date();
+
+            var diferenca = date1 - date2; //diferença em milésimos e positivo
+            var dia = 1000*60*60; // milésimos de segundo correspondente a um dia
+            var total = Math.round(diferenca/dia); //valor total de dias arredondado 
+            var emHoras = Math.round(total);
+           
+            if(emHoras>-1)
                 horarios_saida.push(element);
         })
 

@@ -72,4 +72,19 @@ router.post('/authenticate', async (req, res) => {
      });
 });
 
+//rota para retornar os usuários pelo id
+router.get('/:usuariosId', async (req, res) => {
+    try{
+        var ids = req.params.usuariosId.split("&");
+        var ids_p = [ids[0], ids[1]];
+        const usuarios = await User.find({_id: {$in: ids_p}});
+        //o populate serve para ele buscar o valor dos dados do relacionamento e n somente o id
+        
+
+        return res.send({ usuarios });
+    }catch (e) {
+        return res.status(400).send({ error: 'Erro ao carregar menssagens' });
+    }
+}); 
+
 module.exports = app => app.use('/auth', router);
