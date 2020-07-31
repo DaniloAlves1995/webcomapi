@@ -34,7 +34,7 @@ router.post('/gethorario', async (req, res) => {
       
         const horarios = await Horario.find(busca);
         //o populate serve para ele buscar o valor dos dados do relacionamento e n somente o id
-        
+        console.log("horarios = "+horarios);
         var horarios_saida = [];
         horarios.forEach( (element) => {
             
