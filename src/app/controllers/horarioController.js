@@ -46,8 +46,8 @@ router.post('/gethorario', async (req, res) => {
             var diferenca = date1 - date2; //diferença em milésimos e positivo
             var dia = 1000*60*60; // milésimos de segundo correspondente a um dia
             var total = Math.round(diferenca/dia); //valor total de dias arredondado 
-            var emHoras = Math.round(total) - 3; //diferença de horas do servidor
-           
+            var emHoras = Math.round(total) + 3; //diferença de horas do servidor
+            console.log("horas = "+emHoras);
             if(emHoras>-1)
                 horarios_saida.push(element);
         })
