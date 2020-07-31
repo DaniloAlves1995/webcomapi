@@ -40,6 +40,8 @@ router.post('/gethorario', async (req, res) => {
             
             var date1 = new Date(element.data.substring(0, element.data.length-6));
             var date2 = new Date();
+            console.log("data banco = "+date1);
+            console.log("data atual = "+date2);
 
             var diferenca = date1 - date2; //diferença em milésimos e positivo
             var dia = 1000*60*60; // milésimos de segundo correspondente a um dia
